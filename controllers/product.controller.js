@@ -33,16 +33,20 @@ router.post('/', upload.single('myFile'), (req, res) => {
 
 function insertRecord(req, res) {
     let product = new Product();
-    product.name = req.body.name;
-    product.brand = req.body.brand;
-    product.category = req.body.category;
-    product.img.name = req.file.originalname;
-    product.img.data = fs.readFileSync(req.file.path);
-    product.img.contentType = 'image/jpg';
+    if(req.body){
+        product.name = req.body.name;
+        product.brand = req.body.brand;
+        product.category = req.body.category;
+    }
+    if(req.file) {
+        product.img.name = req.file.originalname;
+        product.img.data = fs.readFileSync(req.file.path);
+        product.img.contentType = 'image/jpg';
+    }
 
     product.save((err, doc) => {
         if (!err) {
-            res.redirect('product/listProduct');
+            res.redirect('product/');
         }
         else {
             console.log('Error in insertion : ' + err);
@@ -51,9 +55,13 @@ function insertRecord(req, res) {
 }
 
 function updateRecord(req, res) {
-    Product.findOneAndUpdate({ _id: req.body._id }, req.body, { new: true }, (err, doc) => {
+    var newProdDetail = {};
+    if(req.body.name!='')newProdDetail.name=req.body.name;
+    if(req.body.brand!='')newProdDetail.brand=req.body.brand;
+    if(req.body.category!='')newProdDetail.category=req.body.category;
+    Product.findOneAndUpdate({ _id: req.body._id }, newProdDetail, { new: true }, (err, doc) => {
         if (!err) {
-            res.redirect('product/listProduct');
+            res.redirect('product/');
         }
         else {
             console.log('Error in updating : ' + err);
@@ -120,7 +128,7 @@ router.get('/:id', (req, res) => {
 router.get('/delete/:id', (req, res) => {
     Product.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
-            res.redirect('/product/listProduct');
+            res.redirect('/product/');
         }
         else {
             console.log('Error in deleting : ' + err);
