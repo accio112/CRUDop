@@ -1,55 +1,66 @@
-<h3>Filter Product Records</h3>
-<form action="/product/filter" method="POST" autocomplete="off">
-    <div class="form-group">
-        <label>Filter by Name</label>
-        <input type="text" class="form-control" name="name" placeholder="Filter By Name"> 
+<h3><strong>Filter Products</strong></h3>
+<br>
+<!--<div class="container">-->
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-2">
+            <form action="/product/filter" method="POST" autocomplete="off">
+                <div class="form-group">
+                    <label>Filter by Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Filter By Name">
+                </div>
+                <div class="form-group">
+                    <label>Filter by Group</label>
+                    <input type="text" class="form-control" name="category" placeholder="Filter By Category">
+                </div>
+                <div class="form-group">
+                    <label>Filter by Brand</label>
+                    <input type="text" class="form-control" name="brand" placeholder="Filter By Brand">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-primary">
+                        Filter
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-8  col-lg-offset-2">
+            <table class="table ">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Brand</th>
+                    <th>Image</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each list}}
+                    <tr>
+                        <td>{{ this.name }}</td>
+                        <td>{{ this.category }}</td>
+                        <td>{{ this.brand }}</td>
+                        <td>
+                            <a href="/product/image/{{ this._id }}"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+                        </td>
+                        <td>
+                            <a href="/product/{{ this._id }}"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a>
+                        </td>
+                        <td>
+                            <a href="/product/delete/{{ this._id }}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-remove fa-lg" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+            <a class="btn btn-outline-secondary" href="/product/add">
+
+                Add New Product
+            </a>
+
+        </div>
     </div>
-    <div class="form-group">
-        <label>Filter by Category</label>
-        <input type="text" class="form-control" name="category" placeholder="Filter By Category"> 
-    </div>
-    <div class="form-group">
-        <label>Filter by Brand</label>
-        <input type="text" class="form-control" name="brand" placeholder="Filter By Brand"> 
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-info">
-            <i class="fa fa-search"></i>
-            Filter
-        </button>
-    </div>
-</form>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Brand</th>
-            <th>Image</th>
-            <th>Edit</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each list}}
-        <tr>
-            <td>{{ this.name }}</td>
-            <td>{{ this.category }}</td>
-            <td>{{ this.brand }}</td>
-            <td>
-                <a href="/product/image/{{ this._id }}"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
-            </td>
-            <td>
-                <a href="/product/{{ this._id }}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-            </td>
-            <td>
-                <a href="/product/delete/{{ this._id }}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
-            </td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
-<a class="btn btn-secondary" href="/product">
-    <i class="fa fa-plus"></i>
-    Add New Product
-</a>
+<!--</div>-->
+
+

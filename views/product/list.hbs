@@ -1,7 +1,7 @@
-<h3>Products</h3>
+<h3><strong>Products</strong></h3>
 
-<table class="table table-striped">
-    <thead>
+<table class="table">
+    <thead class="thead-dark">
         <tr>
             <th>Name</th>
             <th>Category</th>
@@ -18,24 +18,22 @@
             <td>{{ this.category }}</td>
             <td>{{ this.brand }}</td>
             <td>
-                <a href="/product/image/{{ this._id }}"><i class="fa fa-file-image-o" aria-hidden="true"></i></a>
+                <a href="/product/image/{{ this._id }}"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
             </td>
             <td>
-                <a href="/product/{{ this._id }}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/product/{{ this._id }}"><i class="fa fa-edit fa-lg" aria-hidden="true"></i></a>
             </td>
             <td>
-                <a href="/product/delete/{{ this._id }}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+                <a href="/product/delete/{{ this._id }}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-remove fa-lg" aria-hidden="true"></i></a>
             </td>
         </tr>
         {{/each}}
     </tbody>
 </table>
-<a class="btn btn-secondary" href="/product/add">
-    <i class="fa fa-plus"></i>
+<a class="btn btn-outline-primary" href="/product/add">
     Add New Product
 </a>
-<a class="btn btn-secondary" href="/product/filter">
-    <i class="fa fa-filter"></i>
-    Filter Product Records
+<a class="btn btn-outline-primary" href="/product/filter">
+    Filter Product
 </a>
 <br>
