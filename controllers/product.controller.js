@@ -46,7 +46,7 @@ function insertRecord(req, res) {
 
     product.save((err, doc) => {
         if (!err) {
-            res.redirect('product/');
+            res.redirect('/');
         }
         else {
             console.log('Error in insertion : ' + err);
@@ -61,7 +61,7 @@ function updateRecord(req, res) {
     if(req.body.category!='')newProdDetail.category=req.body.category;
     Product.findOneAndUpdate({ _id: req.body._id }, newProdDetail, { new: true }, (err, doc) => {
         if (!err) {
-            res.redirect('product/');
+            res.redirect('/');
         }
         else {
             console.log('Error in updating : ' + err);
@@ -128,7 +128,7 @@ router.get('/:id', (req, res) => {
 router.get('/delete/:id', (req, res) => {
     Product.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
-            res.redirect('/product/');
+            res.redirect('/');
         }
         else {
             console.log('Error in deleting : ' + err);

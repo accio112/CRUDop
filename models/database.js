@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const connection = 'mongodb://dkv:dheeraj1234@ds253094.mlab.com:53094/comment_db';
-// const connection = 'mongodb://localhost:27017/ProductDB';
+// const connection = 'mongodb://dkv:dheeraj1234@ds253094.mlab.com:53094/comment_db';
+const connection = 'mongodb://localhost:27017/ProductDB';
 
 mongoose.connect(connection, { useNewUrlParser: true }, (err) => {
     if (!err) {
