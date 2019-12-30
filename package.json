@@ -2,8 +2,9 @@
   "name": "product-catalog-crud-api",
   "version": "1.0.0",
   "description": "CRUD based API to edit product catalog for an e-commerce company",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha"
   },
   "keywords": [
@@ -12,7 +13,7 @@
     "Mongoose",
     "ProductCatalog"
   ],
-  "author": "Harshit",
+  "author": "Dheeraj",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/harshit98/ECommerce-Product-Catalog/issues"
