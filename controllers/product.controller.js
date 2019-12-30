@@ -6,7 +6,6 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 
-// For image storage, I'm using multer npm package which will store image in binary form.
 const multer = require('multer');
 
 var storage = multer.diskStorage({
@@ -29,15 +28,7 @@ router.get('/add', (req, res) => {
 });
 
 router.post('/', upload.single('myFile'), (req, res) => {
-    // console.log(req.body);
-    // console.log(req.file);
-
-    if (req.body._id == '') {
-        insertRecord(req, res);
-    }
-    else {
-        updateRecord(req, res);
-    }
+    req.body._id === ''? insertRecord(req,res): updateRecord(req,res);
 });
 
 function insertRecord(req, res) {

@@ -1,19 +1,19 @@
 <h3>{{ viewTitle }}</h3>
 
-<!-- https://localhost:3000/product -->
+
 <form action="/product/" method="POST" autocomplete="off" enctype="multipart/form-data">
     <input type="hidden" name="_id" value="{{ product._id }}">
     <div class="form-group">
-        <!--<label>Name</label>-->
-        <input type="text" class="form-control" name="name" placeholder="Name"> 
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" placeholder="{{product.name}}" >
     </div>
     <div class="form-group">
-        <!--<label>Category</label>-->
-        <input type="text" class="form-control" name="category" placeholder="Category">
+        <label>Category</label>
+        <input type="text" class="form-control" name="category" placeholder="{{product.category}}">
     </div>
     <div class="form-group">
-        <!--<label>Brand</label>-->
-        <input type="text" class="form-control" name="brand" placeholder="Brand">
+        <label>Brand</label>
+        <input type="text" class="form-control" name="brand" placeholder="{{product.brand}}">
     </div>
     <div class="form-group">
         <input type="file" name="myFile">
